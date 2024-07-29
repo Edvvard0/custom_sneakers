@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from telebot import types, TeleBot
-from sklad import comment_list, photo_list, ready_models
-from tg_token import  token
+from sklad import photo_list, ready_models
+from tg_token import token
 
 bot = TeleBot(token)
 
@@ -17,8 +17,7 @@ list_commands = '''Бот может:
 /models - готовые модели 
 /individual_castom - индивидуальный заказ
 /care - уход за обувью
-/order - заказ
-/make_order - сделать заказ'''
+'''
 
 start_message = f'''Вас приветствует команда Castom night.
 Мы занимаемся кастомом кросовок.
@@ -74,6 +73,10 @@ def start(message):
 def comments(message):
     bot.send_message(message.chat.id, individual_castom)
 
+
+@bot.message_handler(commands=['comments'])
+def comments(message):
+    bot.send_message(message.chat.id, 'Отзывы вы можете почитать в тг канале @ссылка')
 
 user_states = {}
 
