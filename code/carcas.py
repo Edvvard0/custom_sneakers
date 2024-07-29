@@ -74,22 +74,22 @@ def comments(message):
     bot.send_message(message.chat.id, individual_castom)
 
 
+user_states = {}
+
 @bot.message_handler(commands=['models'])
 def send_models(message):
     user_id = message.from_user.id
     user_states[user_id] = {'index': 0}  # Инициализируем индекс для пользователя
     send_photo(message, user_id)
 
-
 def send_photo(message, user_id):
     index = user_states[user_id]['index']
     if index < len(photo_list):
         with open(photo_list[index], 'rb') as photo:
+            bot.send_message(message.chat.id, comment_list[index])
             bot.send_photo(message.chat.id, photo, reply_markup=next_button())
-            bot.send_photo(message.chat.id, comment_list[index], reply_markup=next_button())
     else:
         bot.send_message(message.chat.id, "Это все модели кроссовок!")
-
 
 @bot.callback_query_handler(func=lambda call: call.data == 'next')
 def next_model(call):
@@ -98,13 +98,11 @@ def next_model(call):
         user_states[user_id]['index'] += 1  # Увеличиваем индекс
         send_photo(call.message, user_id)
 
-
 def next_button():
     markup = types.InlineKeyboardMarkup()
     next_button = types.InlineKeyboardButton("Next", callback_data='next')
     markup.add(next_button)
     return markup
-
 
 
 bot.polling(none_stop=True)
