@@ -86,7 +86,7 @@ def send_photo(message, user_id):
     index = user_states[user_id]['index']
     if index < len(photo_list):
         with open(photo_list[index], 'rb') as photo:
-            bot.send_message(message.chat.id, comment_list[index])
+            bot.send_message(message.chat.id, ready_models[index])
             bot.send_photo(message.chat.id, photo, reply_markup=next_button())
     else:
         bot.send_message(message.chat.id, "Это все модели кроссовок!")
