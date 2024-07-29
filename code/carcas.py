@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from telebot import types, TeleBot
 from sklad import comment_list, photo_list, ready_models
+from tg_token import  token
 
-bot = TeleBot("your token")
+bot = TeleBot(token)
 
 #Служебные переменные для вывода информации о компании
 
