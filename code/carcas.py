@@ -2,7 +2,7 @@
 from telebot import types, TeleBot
 from sklad import comment_list, photo_list, ready_models
 
-bot = TeleBot("7382523397:AAE9bCchn84A4ndqpUEME-A6YkmDAR4_V38")
+bot = TeleBot("your token")
 
 #Служебные переменные для вывода информации о компании
 
