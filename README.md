@@ -29,11 +29,12 @@
 
 1. Клонируйте репозиторий:
 
->git clone https://github.com/Edvvard0/custom_sneakers.git
+```git clone https://github.com/Edvvard0/custom_sneakers.git```
 
 2. Установите необходимые библиотеки
  (все библиотеки вынесенны в  отдельный файл library.txt):
->pip install -r library.txt
+
+```pip install -r library.txt```
 
 3. Настройте бота:
    - Получите токен вашего бота от [BotFather](https://t.me/botfather).
